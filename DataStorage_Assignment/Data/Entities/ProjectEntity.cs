@@ -8,9 +8,6 @@ namespace Data.Entities
         [Key]
         public int ProjectId { get; set; } // Replacing Id with ProjectId
 
-
-
-
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
 
@@ -26,14 +23,7 @@ namespace Data.Entities
         public int UserId { get; set; }
         public UserEntity User { get; set; } = null!;
 
-        public int ProductId { get; set; }
-        public ProductEntity Product { get; set; } = null!;
-
-/*        [Column(TypeName = "decimal(18,2)")]
-        public decimal ServicePricePerHour { get; set; }
-
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal TotalPrice { get; set; }*/
+        // Removed ProductId and ProductEntity
 
         // ✅ Adding CustomerId and Customer for compatibility with other parts of the app
         public int CustomerId { get; set; }

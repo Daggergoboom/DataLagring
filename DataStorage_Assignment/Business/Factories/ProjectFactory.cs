@@ -14,7 +14,7 @@ namespace Business.Factories
             EndDate = form.EndDate,
             StatusId = form.StatusId,
             UserId = form.UserId,
-            ProductId = form.ProductId,
+            //ProductId = form.ProductId,
         };
 
         // Convert ProjectEntity to ProjectModel
@@ -29,8 +29,8 @@ namespace Business.Factories
             StatusName = entity.Status?.StatusName ?? "Unknown",
             UserId = entity.UserId,
             UserName = entity.User != null ? $"{entity.User.FirstName} {entity.User.LastName}" : "Unknown",
-            ProductId = entity.ProductId,
-            ProductName = entity.Product?.ProductName ?? "Unknown",
+            //ProductId = entity.ProductId,
+            //ProductName = entity.Product?.ProductName ?? "Unknown",
         };
 
         // Convert ProjectModel back to ProjectEntity
@@ -43,7 +43,7 @@ namespace Business.Factories
             EndDate = project.EndDate,
             StatusId = project.StatusId,
             UserId = project.UserId,
-            ProductId = project.ProductId,
+            //ProductId = project.ProductId,
 
         };
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Jvopyohosg=",
+  "dgSpecHash": "wPe/tH6AupA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\data\\Data.csproj",
+  "projectFilePath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matth\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

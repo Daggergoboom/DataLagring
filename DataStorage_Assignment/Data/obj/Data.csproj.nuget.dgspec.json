@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\data\\Data.csproj": {}
+    "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\data\\Data.csproj": {
+    "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\data\\Data.csproj",
+        "projectPath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\data\\obj\\",
+        "outputPath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
