@@ -32,7 +32,24 @@ public class CustomerService(CustomerRepository customerRepository)
         var customerEntity = await _customerRepository.GetAsync(x => x.CustomerName == customerName);
         return CustomerFactory.Create(customerEntity!);
     }
-    public async Task<bool> UpdateCustomerAsync(Customer customer) { }
-    public async Task<bool> DeleteCustomerAsync(int id) { }
+    public async Task<bool> DeleteCustomerAsync(int id)
+    {
+        var customer = await _customerRepository.GetAsync(x => x.Id == id);
+        if (customer == null)
+            return false;
+
+        await _customerRepository.RemoveAsync(customer);
+        return true;
+    }
+
+    public async Task<bool> UpdateCustomerAsync(Customer customer)
+    {
+        var customerEntity = CustomerFactory.Create(customer);
+        if (customerEntity == null)
+            return false;
+
+        await _customerRepository.UpdateAsync(customerEntity);
+        return true;
+    }
 
 }

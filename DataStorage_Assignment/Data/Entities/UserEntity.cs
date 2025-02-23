@@ -13,4 +13,6 @@ public class UserEntity
 
 
     public string Email { get; set; } = null!;
+
+    public virtual ICollection<ProjectEntity> Projects { get; set; } = [];
 }

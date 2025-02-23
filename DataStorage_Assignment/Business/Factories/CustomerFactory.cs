@@ -15,4 +15,12 @@ public static class CustomerFactory
         Id = entity.Id,
         CustomerName = entity.CustomerName,
     };
+
+
+    public static CustomerEntity? Create(Customer customer) => customer == null ? null : new()
+    {
+        Id = customer.Id,
+        CustomerName = customer.CustomerName
+    };
 }
+

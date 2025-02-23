@@ -1,13 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.Contexts;
 
-public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
+public class DataContext : DbContext
 {
-    public DbSet<Entities.CustomerEntity> Customers { get; set; }
-    public DbSet<Entities.ProductEntity> Products { get; set; }
-    public DbSet<Entities.StatusTypeEntity> StatusTypes { get; set; }
-    public DbSet<Entities.UserEntity> Users { get; set; }
+    public DataContext(DbContextOptions options) : base(options)
+    {
+    }
 
-    public DbSet<Entities.ProjectEntity> Projects { get; set; }
+    public DbSet<CustomerEntity> Customers { get; set; } = null!;
+    public DbSet<ProductEntity> Products { get; set; } = null!;
+
+    public DbSet<UserEntity> Users { get; set; } = null!;
+    
+    public DbSet<StatusTypeEntity> StatusTypes { get; set; } = null!;
+    public DbSet<ProjectEntity> Projects { get; set; } = null!;
+    
+
+
 }
