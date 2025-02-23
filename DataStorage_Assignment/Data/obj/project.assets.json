@@ -4717,11 +4717,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\matth\\source\\repos\\DataStorage_Assignment\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\matth\\source\\repos\\DataStorage_Assignment\\Data\\Data.csproj",
+      "projectPath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\matth\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\matth\\source\\repos\\DataStorage_Assignment\\Data\\obj\\",
+      "outputPath": "C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
