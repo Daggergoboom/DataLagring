@@ -4,6 +4,7 @@ using Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20250223212114_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,23 +40,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CustomerName = "Acme Corporation"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CustomerName = "Globex Corporation"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CustomerName = "Initech"
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.ProjectEntity", b =>
@@ -71,12 +57,12 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
 
-                    b.Property<int?>("StatusId")
+                    b.Property<int>("StatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -112,23 +98,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StatusTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            StatusName = "Not Started"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            StatusName = "Ongoing"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            StatusName = "Finished"
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.UserEntity", b =>
@@ -154,29 +123,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "john.doe@example.com",
-                            FirstName = "John",
-                            LastName = "Doe"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "jane.smith@example.com",
-                            FirstName = "Jane",
-                            LastName = "Smith"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "alice.johnson@example.com",
-                            FirstName = "Alice",
-                            LastName = "Johnson"
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.ProjectEntity", b =>
@@ -189,7 +135,9 @@ namespace Data.Migrations
 
                     b.HasOne("Data.Entities.StatusTypeEntity", "Status")
                         .WithMany("Projects")
-                        .HasForeignKey("StatusId");
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Data.Entities.UserEntity", "User")
                         .WithMany("Projects")

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250223203950_RemoveProductFromProject")]
-    partial class RemoveProductFromProject
+    [Migration("20250223213828_SeedStatusTypes")]
+    partial class SeedStatusTypes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,26 +42,6 @@ namespace Data.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Data.Entities.ProductEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Products");
-                });
-
             modelBuilder.Entity("Data.Entities.ProjectEntity", b =>
                 {
                     b.Property<int>("ProjectId")
@@ -79,9 +59,6 @@ namespace Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("date");
 
-                    b.Property<int?>("ProductEntityId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
 
@@ -98,8 +75,6 @@ namespace Data.Migrations
                     b.HasKey("ProjectId");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("ProductEntityId");
 
                     b.HasIndex("StatusId");
 
@@ -123,6 +98,23 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StatusTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            StatusName = "Not Started"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            StatusName = "Ongoing"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            StatusName = "Finished"
+                        });
                 });
 
             modelBuilder.Entity("Data.Entities.UserEntity", b =>
@@ -158,10 +150,6 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.ProductEntity", null)
-                        .WithMany("Projects")
-                        .HasForeignKey("ProductEntityId");
-
                     b.HasOne("Data.Entities.StatusTypeEntity", "Status")
                         .WithMany("Projects")
                         .HasForeignKey("StatusId")
@@ -182,11 +170,6 @@ namespace Data.Migrations
                 });
 
             modelBuilder.Entity("Data.Entities.CustomerEntity", b =>
-                {
-                    b.Navigation("Projects");
-                });
-
-            modelBuilder.Entity("Data.Entities.ProductEntity", b =>
                 {
                     b.Navigation("Projects");
                 });

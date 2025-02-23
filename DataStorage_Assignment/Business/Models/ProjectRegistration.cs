@@ -10,12 +10,10 @@
         public DateTime EndDate { get; set; }
 
         // Foreign Key Inputs
-        public int StatusId { get; set; }
-        public int UserId { get; set; }
-        public int ProductId { get; set; }
-
-        // Pricing Information
-        public decimal ServicePricePerHour { get; set; }
+        public int StatusId { get; set; }  // FK for StatusTypes (Not Started, Ongoing, Finished)
+        public int UserId { get; set; }    // FK for Project Manager (User ID)
+        public int CustomerId { get; set; } // FK for CustomerEntity
+        public string CustomerName { get; set; } = string.Empty; // ✅ Add this line
 
         // Method to auto-generate Project ID
         private static int GenerateProjectId()

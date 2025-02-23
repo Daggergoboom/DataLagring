@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250223184727_Init")]
-    partial class Init
+    [Migration("20250223221822_SeedUsers")]
+    partial class SeedUsers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,26 +40,23 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-                });
 
-            modelBuilder.Entity("Data.Entities.ProductEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Products");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CustomerName = "Acme Corporation"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CustomerName = "Globex Corporation"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CustomerName = "Initech"
+                        });
                 });
 
             modelBuilder.Entity("Data.Entities.ProjectEntity", b =>
@@ -77,15 +74,12 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("date");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int?>("StatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -98,8 +92,6 @@ namespace Data.Migrations
                     b.HasKey("ProjectId");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("ProductId");
 
                     b.HasIndex("StatusId");
 
@@ -123,6 +115,23 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StatusTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            StatusName = "Not Started"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            StatusName = "Ongoing"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            StatusName = "Finished"
+                        });
                 });
 
             modelBuilder.Entity("Data.Entities.UserEntity", b =>
@@ -148,6 +157,29 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "john.doe@example.com",
+                            FirstName = "John",
+                            LastName = "Doe"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "jane.smith@example.com",
+                            FirstName = "Jane",
+                            LastName = "Smith"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "alice.johnson@example.com",
+                            FirstName = "Alice",
+                            LastName = "Johnson"
+                        });
                 });
 
             modelBuilder.Entity("Data.Entities.ProjectEntity", b =>
@@ -158,17 +190,9 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.ProductEntity", "Product")
-                        .WithMany("Projects")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Data.Entities.StatusTypeEntity", "Status")
                         .WithMany("Projects")
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StatusId");
 
                     b.HasOne("Data.Entities.UserEntity", "User")
                         .WithMany("Projects")
@@ -178,19 +202,12 @@ namespace Data.Migrations
 
                     b.Navigation("Customer");
 
-                    b.Navigation("Product");
-
                     b.Navigation("Status");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("Data.Entities.CustomerEntity", b =>
-                {
-                    b.Navigation("Projects");
-                });
-
-            modelBuilder.Entity("Data.Entities.ProductEntity", b =>
                 {
                     b.Navigation("Projects");
                 });

@@ -7,19 +7,19 @@ namespace Data.Contexts
     {
         public DataContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            var builder = new DbContextOptionsBuilder<DataContext>();
 
-            // Notice the "Database=Test_Database;" part added below
-            var connectionString =
+            // Make sure to escape backslashes (\\) in a C# string literal
+            const string connectionString =
                 "Data Source=(LocalDB)\\MSSQLLocalDB;" +
                 "AttachDbFilename=C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Databases\\Test_Database.mdf;" +
                 "Database=Test_Database;" +
                 "Integrated Security=True;" +
                 "Connect Timeout=30;";
 
-            optionsBuilder.UseSqlServer(connectionString);
+            builder.UseSqlServer(connectionString);
 
-            return new DataContext(optionsBuilder.Options);
+            return new DataContext(builder.Options);
         }
     }
 }

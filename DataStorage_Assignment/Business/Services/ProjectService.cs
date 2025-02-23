@@ -11,61 +11,106 @@ namespace Business.Services
     {
         private readonly ProjectRepository _projectRepository;
         private readonly CustomerRepository _customerRepository;
+        private readonly UserRepository _userRepository;
 
-        public ProjectService(ProjectRepository projectRepository, CustomerRepository customerRepository)
+        public ProjectService(ProjectRepository projectRepository, CustomerRepository customerRepository, UserRepository userRepository)
         {
             _projectRepository = projectRepository;
             _customerRepository = customerRepository;
+            _userRepository = userRepository;
         }
 
-        // Create a new project with automatic customer assignment
+        // ✅ Fetch all customers (without duplicates)
+        public async Task<IEnumerable<CustomerModel>> GetAllCustomersAsync()
+        {
+            var customers = await _customerRepository.GetAsync();
+            return customers.Select(c => new CustomerModel
+            {
+                Id = c.Id,
+                CustomerName = c.CustomerName
+            });
+        }
+
+        // ✅ Create a new customer and return the created customer
+        public async Task<CustomerModel> CreateCustomerAsync(string customerName)
+        {
+            var newCustomer = new CustomerEntity
+            {
+                CustomerName = customerName
+            };
+
+            await _customerRepository.AddAsync(newCustomer);
+
+            return new CustomerModel
+            {
+                Id = newCustomer.Id,
+                CustomerName = newCustomer.CustomerName
+            };
+        }
+
+        // ✅ Fetch all users for selection
+        public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
+        {
+            var users = await _userRepository.GetAsync();
+            return users.Select(u => new UserModel
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email
+            });
+        }
+
+        // ✅ Create a new project with customer and user validation
         public async Task CreateProjectAsync(ProjectRegistration form)
         {
             var customers = await _customerRepository.GetAsync();
-            var existingCustomer = customers.FirstOrDefault();
+            var existingCustomer = customers.FirstOrDefault(c => c.Id == form.CustomerId);
 
-            // If no customers exist, create a default one
             if (existingCustomer == null)
             {
-                var defaultCustomer = new CustomerEntity
-                {
-                    CustomerName = "Default Customer"
-                };
-                await _customerRepository.AddAsync(defaultCustomer);
-                existingCustomer = defaultCustomer;
+                throw new Exception("Customer not found.");
             }
 
-            // Create the project entity from the form and assign customer ID
+            var users = await _userRepository.GetAsync();
+            var existingUser = users.FirstOrDefault(u => u.Id == form.UserId);
+
+            if (existingUser == null)
+            {
+                throw new Exception("User not found.");
+            }
+
             var projectEntity = ProjectFactory.Create(form);
             if (projectEntity != null)
             {
                 projectEntity.CustomerId = existingCustomer.Id;
+                projectEntity.UserId = existingUser.Id;
                 await _projectRepository.AddAsync(projectEntity);
             }
         }
 
-        // Retrieve all projects
+        // ✅ Retrieve all projects
         public async Task<IEnumerable<ProjectModel>> GetProjectsAsync()
         {
             var projectEntities = await _projectRepository.GetAsync();
             return projectEntities.Select(ProjectFactory.Create)!;
         }
 
-        // Retrieve a project by ID
+        // ✅ Retrieve a project by ID
         public async Task<ProjectModel?> GetProjectByIdAsync(int projectId)
         {
             var projectEntity = await _projectRepository.GetAsync(x => x.ProjectId == projectId);
             return ProjectFactory.Create(projectEntity!);
         }
 
-        // Retrieve a project by its name
+        // ✅ Retrieve a project by name
         public async Task<ProjectModel?> GetProjectByNameAsync(string projectName)
         {
             var projectEntity = await _projectRepository.GetAsync(x => x.Title == projectName);
             return ProjectFactory.Create(projectEntity!);
         }
 
-        // Update an existing project
+        // ✅ Update an existing project
         public async Task<bool> UpdateProjectAsync(ProjectModel project)
         {
             var existingProject = await _projectRepository.GetAsync(x => x.ProjectId == project.ProjectId);
@@ -81,7 +126,7 @@ namespace Business.Services
             return false;
         }
 
-        // Delete a project by its ID
+        // ✅ Delete a project by ID
         public async Task<bool> DeleteProjectAsync(int projectId)
         {
             var projectEntity = await _projectRepository.GetAsync(x => x.ProjectId == projectId);

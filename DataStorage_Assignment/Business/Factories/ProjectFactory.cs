@@ -14,7 +14,7 @@ namespace Business.Factories
             EndDate = form.EndDate,
             StatusId = form.StatusId,
             UserId = form.UserId,
-            //ProductId = form.ProductId,
+            CustomerId = form.CustomerId
         };
 
         // Convert ProjectEntity to ProjectModel
@@ -25,26 +25,27 @@ namespace Business.Factories
             Description = entity.Description,
             StartDate = entity.StartDate,
             EndDate = entity.EndDate,
-            StatusId = entity.StatusId,
+            StatusId = entity.StatusId ?? 0, // Handle nullable int
             StatusName = entity.Status?.StatusName ?? "Unknown",
             UserId = entity.UserId,
             UserName = entity.User != null ? $"{entity.User.FirstName} {entity.User.LastName}" : "Unknown",
-            //ProductId = entity.ProductId,
-            //ProductName = entity.Product?.ProductName ?? "Unknown",
+            CustomerId = entity.CustomerId,
+            CustomerName = entity.Customer != null ? entity.Customer.CustomerName : "Unknown",
+            ServicePricePerHour = 0, // Assuming default value since pricing is not provided in entity
+            TotalPrice = 0 // Placeholder for total price calculation if needed later
         };
 
         // Convert ProjectModel back to ProjectEntity
         public static ProjectEntity? Create(ProjectModel project) => project == null ? null : new()
         {
-            ProjectId = project.ProjectId, // Ensuring consistency with entity ID
+            ProjectId = project.ProjectId,
             Title = project.Title,
             Description = project.Description,
             StartDate = project.StartDate,
             EndDate = project.EndDate,
             StatusId = project.StatusId,
             UserId = project.UserId,
-            //ProductId = project.ProductId,
-
+            CustomerId = project.CustomerId
         };
     }
 }

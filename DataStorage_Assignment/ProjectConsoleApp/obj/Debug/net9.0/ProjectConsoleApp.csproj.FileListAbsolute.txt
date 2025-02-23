@@ -1,9 +1,3 @@
-C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.csproj.AssemblyReference.cache
-C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.AssemblyInfoInputs.cache
-C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.AssemblyInfo.cs
-C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.csproj.CoreCompileInputs.cache
-C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.sourcelink.json
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\bin\Debug\net9.0\ProjectConsoleApp.exe
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\bin\Debug\net9.0\ProjectConsoleApp.deps.json
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\bin\Debug\net9.0\ProjectConsoleApp.runtimeconfig.json
@@ -152,6 +146,12 @@ C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\bin\Debug\net9.0\Data.dll
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\bin\Debug\net9.0\Business.pdb
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\bin\Debug\net9.0\Data.pdb
+C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.csproj.AssemblyReference.cache
+C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.AssemblyInfoInputs.cache
+C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.AssemblyInfo.cs
+C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.sourcelink.json
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectC.CB49BEA8.Up2Date
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\ProjectConsoleApp.dll
 C:\Users\matth\source\repos\DataLagring\DataStorage_Assignment\ProjectConsoleApp\obj\Debug\net9.0\refint\ProjectConsoleApp.dll

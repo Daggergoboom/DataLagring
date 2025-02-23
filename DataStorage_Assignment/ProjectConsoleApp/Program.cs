@@ -26,7 +26,6 @@ namespace ProjectConsoleApp
                 .AddDbContext<DataContext>(x => x.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\matth\\source\\repos\\DataLagring\\DataStorage_Assignment\\Data\\Databases\\Test_Database.mdf;Integrated Security=True;Connect Timeout=30"))
                 .AddScoped<StatusRepository>()
                 .AddScoped<CustomerRepository>()
-                .AddScoped<ProductRepository>()
                 .AddScoped<UserRepository>()
                 .AddScoped<ProjectRepository>()
 
