@@ -1,0 +1,9 @@
+.vs/ 
+*.vsidx 
+*.user 
+*.suo 
+*.userosscache 
+*.sln.docstates 
+*.mdf
+*.ldf
+Data/Databases/
